@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body>
+  <div class="dashboard-container">
+    <aside class="sidebar">
+      <h2>Zidio</h2>
+      <nav>
+        <ul>
+          <li onclick="navigateTo('profile')">👤 Profile</li>
+          <li onclick="navigateTo('resume')">📄 Upload Resume</li>
+          <li onclick="navigateTo('jobs')">💼 Job Listings</li>
+          <li onclick="navigateTo('status')">📊 Application Status</li>
+          <li onclick="logout()">🚪 Logout</li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <div id="profile" class="page">
+        <h2>Student Profile</h2>
+        <form id="profile-form">
+          <label for="name">Full Name:</label>
+          <input type="text" id="name" name="name" required />
+
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required readonly />
+
+          <label for="college">College / Branch:</label>
+          <input type="text" id="college" name="college" />
+
+          <label for="phone">Phone Number:</label>
+          <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" />
+
+          <button type="submit">Update Profile</button>
+        </form>
+        <div id="profile-message"></div>
+      </div>
+
+      <div id="resume" class="page" style="display: none;">
+        <h2>Upload Resume</h2>
+        <form id="resume-form" enctype="multipart/form-data">
+          <label for="resumeFile">Select Resume (PDF only):</label>
+          <input type="file" id="resumeFile" name="resume" accept=".pdf" required />
+          <button type="submit">Upload</button>
+        </form>
+        <div id="resume-message"></div>
+      </div>
+
+
+      <div id="jobs" class="page" style="display: none;">
+        <h2>Available Job Listings</h2>
+        <div id="job-listings" class="job-cards-container">
+            <!-- Job cards will be dynamically inserted here -->
+        </div>
+      </div>
+
+
+      <div id="status" class="page" style="display: none;">
+        <h2>Your Applications</h2>
+        <div id="application-tracker" class="application-container">
+            <!-- Application entries will appear here -->
+      </div>
+</div>
+
+    </main>
+  </div>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>
